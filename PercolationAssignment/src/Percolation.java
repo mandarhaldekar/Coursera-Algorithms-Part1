@@ -4,14 +4,15 @@ public class Percolation {
 	int N;  //Grid size
 	int openSites[];
 	WeightedQuickUnionUF weightedQuickUnionUF;
-	boolean isOpen[];
+	int numberOfOpenSites;
+	
 	
 	/**
 	 * Constructor that initialises NxN grid
 	 * @param N
 	 */
 	public Percolation(int N){
-		
+		numberOfOpenSites = 0;
 		this.N = N;
 		weightedQuickUnionUF = new WeightedQuickUnionUF(N*N+2);
 		openSites = new int[N*N]; //Two extra for virtual top and bottom and one extra as we are starting from N=1
@@ -47,6 +48,8 @@ public class Percolation {
 			//open it 
 			openSites[xyToOneD(i, j)] = 1;
 			
+			//increment number of open sites
+			numberOfOpenSites++;
 			
 			//Connect to adjacent open sites
 			if( isWithinBounds(i+1, j) && openSites[xyToOneD(i+1, j)] == 1){
