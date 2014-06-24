@@ -1,4 +1,4 @@
-Coursera-Algorithms-Part1
+Coursera-Algorithms-Part1(By Stanford University)
 =========================
 
-Coursera: Algorithms Part 1 Assignments - By Stanford University
+Algorithms Part 1 Assignments
