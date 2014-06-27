@@ -1,11 +1,11 @@
 
 public class PercolationStats {
 	
-	int N; //dimension of grid is NxN
-	int T; //number of computations
-	double percolationThreshold[];
-	Percolation percolation;
-	double mean, stddev, lowConfidenceInterval, highConfidenceInterval;
+	private int N; //dimension of grid is NxN
+	private int T; //number of computations
+	private double percolationThreshold[];
+	private Percolation percolation;
+	private double mean, stddev, lowConfidenceInterval, highConfidenceInterval;
 	
 	/**
 	 * perform T independent computational experiments on an N-by-N grid
@@ -18,15 +18,20 @@ public class PercolationStats {
 		percolationThreshold = new double[T];
 		
 		for(int i = 0; i < T; i ++){
+			int openSites = 0; // To keep track of open sites
 			percolation = new Percolation(N);
 			while(!percolation.percolates()){
 				int x = StdRandom.uniform(1, N+1);
 				int y = StdRandom.uniform(1, N+1);
-				percolation.open(x, y);
+				
+				if(!percolation.isOpen(x, y)){
+					openSites++;
+					percolation.open(x, y);
+				}
 				
 			}
 			//percolation probability
-			percolationThreshold[i] = (double)percolation.numberOfOpenSites / (N*N);
+			percolationThreshold[i] = (double)openSites / (N*N);
 			
 		}
 		
