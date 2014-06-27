@@ -1,10 +1,10 @@
 
 public class Percolation {
 
-	int N;  //Grid size
-	int openSites[];
-	WeightedQuickUnionUF weightedQuickUnionUF;
-	int numberOfOpenSites;
+	private int N;  //Grid size
+	private int openSites[];
+	private WeightedQuickUnionUF weightedQuickUnionUF;
+	private int numberOfOpenSites;
 	
 	
 	/**
@@ -18,6 +18,7 @@ public class Percolation {
 		openSites = new int[N*N]; //Two extra for virtual top and bottom and one extra as we are starting from N=1
 		for(int i = 0; i < N*N ; i++)
 				openSites[i] = 0;
+		
 	}
 	
 	/**
